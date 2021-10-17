@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人社保计算器-网页版</title>
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>	
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script>
+    function calc() {
+        //取得文本框值
+        salary = $("#sal").val();//jQuert语法
+        salNUM = parseInt(salary);
+            
+        //养老计算
+        ylgr = salNUM * 0.08
+        ylgs = salNUM * 0.2
+        $("#ylgr").text(ylgr);
+        $("#ylgs").html(ylgs);
+        
+        //医保计算
+        ybgr = salNUM * 0.02
+        ybgs = salNUM * 0.06
+        $("#ybgr").html(ybgr);
+        $("#ybgs").html(ybgs);
+        
+        //失业保险计算
+        sygr = salNUM * 0.005;
+        sygs = salNUM * 0.015;
+        $("#sygr").html(sygr);
+        $("#sygs").html(sygs);
+        
+        //工伤计算
+        gsgs = salNUM * 0.005;
+        $("#gsgs").html(gsgs);
+                
+        //生育计算
+        sysy = salNUM * 0.008;
+        $("#sysy").html(sysy);
+                
+        //公积金计算
+        gjjgr = salNUM * 0.12;
+        gjjgs = salNUM * 0.12;
+        $("#gjjgr").html(gjjgr);
+        $("#gjjgs").html(gjjgs);
+                
+        //个人合计
+        grhj = ylgr + ybgr + sygr + gjjgr;
+        gshj = ylgs + ybgs + sygs + gsgs + sysy + gjjgs;
+        $("#grhj").html(grhj);
+        $("#gshj").html(gshj);
+                
+        //总额
+        total = grhj + gshj;
+        $("#total").html(total);
+    }
+    </script>
+	</head>
+	<body>
+		<div class="container text-center">
+		<h1>个人社保计算器</h1>
+		<table class="table table-bordered">
+			<tr>
+				<td>工资</td>
+				<td colspan="3">
+					<input  id="sal" class="form-control" placeholder="请输入工资" type="text" />
+				</td>
+				<td>
+					<button onclick="calc()" class="btn btn-danger btn-block">计算</button>
+				</td>
+			</tr>
+			<tr class="bg-primary">
+				<td>险种</td>
+				<td>个人%</td>
+				<td>个人</td>
+				<td>公司%</td>
+				<td>公司</td>
+			</tr>
+			<tr>
+				<td class="bg-primary">养老</td>
+				<td>8%</td>
+				<td id="ylgr"></td>
+				<td>20%</td>
+				<td id="ylgs"></td>
+			</tr>
+			<tr>
+				<td class="bg-primary">医保</td>
+				<td>2%</td>
+				<td id="ybgr"></td>
+				<td>6%</td>
+				<td id="ybgs"></td>
+			</tr>
+			<tr>
+				<td class="bg-primary">失业</td>
+				<td>0.5%</td>
+				<td id="sygr"></td>
+				<td>1.5%</td>
+				<td id="sygs"></td>
+			</tr>
+			<tr>
+				<td class="bg-primary">工伤</td>
+				<td></td>
+				<td></td>
+				<td>0.5%</td>
+				<td id="gsgs"></td>
+			</tr>
+			<tr>
+				<td class="bg-primary">生育</td>
+				<td></td>
+				<td></td>
+				<td>0.8%</td>
+				<td id="sysy"></td>
+			</tr>
+			<tr>
+				<td class="bg-primary">公积金</td>
+				<td>12%</td>
+				<td id="gjjgr"></td>
+				<td>12%</td>
+				<td id="gjjgs"></td>
+			</tr>
+			<tr>
+				<td>合计</td>
+				<td>个人合计</td>
+				<td id="grhj"></td>
+				<td>公司合计</td>
+				<td id="gshj"></td>
+			</tr>
+			<tr>
+				<td>总额</td>
+				<td colspan="4" id="total"></td>
+			</tr>
+		</table>
+			开发者:李嘉成功 202088226
+		</div>
+	</body>
+</html>
